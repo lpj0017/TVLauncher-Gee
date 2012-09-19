@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:background="#ff000000" android:gravity="center" >
+
+	<TextView android:layout_width="wrap_content"
+		android:layout_height="wrap_content" 
+		android:text="12:00pm" android:textColor="@color/main_bar_text" android:textSize="24dip"
+		android:textStyle="bold" android:id="@+id/TextViewTime" />
+
+
+	
+	<ImageView
+	    android:id="@+id/imageViewNotifications"
+	    android:layout_width="30dip"
+	    android:layout_height="30dip"
+	    android:layout_marginLeft="1dip"
+	    
+	    android:layout_below="@+id/TextViewTime"
+	    	    android:focusable="true"
+
+	    android:src="@drawable/notification_icon_selector" />
+	
+		<TextView android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignLeft="@+id/imageViewNotifications"
+		android:layout_alignRight="@+id/imageViewNotifications"
+		android:layout_alignTop="@+id/imageViewNotifications"
+		android:layout_alignBottom="@+id/imageViewNotifications"
+		
+		android:text="12" android:textColor="@color/main_bar_text" android:textSize="20dip"
+		android:layout_below="@+id/TextViewTime"
+		android:gravity="center" android:visibility="gone"
+		android:textStyle="bold" android:id="@+id/TextViewCount" />
+	
+<ImageView
+	    android:id="@+id/imageViewDrawer"
+	    android:layout_width="30dip"
+	    android:layout_height="30dip"
+	    android:layout_below="@+id/TextViewTime"
+	    android:layout_toRightOf="@+id/imageViewNotifications"
+	    android:layout_marginLeft="10dip"
+	    android:focusable="true"
+	
+	    android:src="@drawable/up_selector" />
+</RelativeLayout>
