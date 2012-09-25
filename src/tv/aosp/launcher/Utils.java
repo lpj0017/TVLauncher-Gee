@@ -59,6 +59,7 @@ public class Utils {
 		}
 	}
 
+	
 	/**
 	 * Calculates the average colour of a bitmap in the RGB space
 	 * 
@@ -66,18 +67,20 @@ public class Utils {
 	 * @return the average colour
 	 */
 	public static int averageColour(Bitmap bmp) {
-
+		
+		int step = 4;
 		int r = 0, g = 0, b = 0;
 		int width = bmp.getWidth();
 		int height = bmp.getHeight();
-		int pixels = width * height;
-		for (int x = 0; x < width; x++) {
-			for (int y = 0; y < height; y++) {
+		int pixels = 0;
+		for (int x = 0; x < width; x+=step) {
+			for (int y = 0; y < height; y+=step) {
 
 				int pixel = bmp.getPixel(x, y);
 				r += Color.red(pixel);
 				g += Color.green(pixel);
 				b += Color.blue(pixel);
+				pixels++;
 			}
 		}
 		r /= pixels;
@@ -85,6 +88,7 @@ public class Utils {
 		b /= pixels;
 
 		return Color.rgb(r, g, b);
+	
 	}
 
 	/**

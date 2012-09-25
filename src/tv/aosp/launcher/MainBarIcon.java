@@ -73,13 +73,15 @@ public class MainBarIcon extends LinearLayout implements OnLongClickListener {
 			Rect previouslyFocusedRect) {
 		// TODO Auto-generated method stub
 		super.onFocusChanged(gainFocus, direction, previouslyFocusedRect);
+		
 		if(gainFocus){
-			setBackgroundColor(mLauncherIcon.averageColour);
+			setBackgroundColorInternal(mLauncherIcon.averageColour);
 			mTextView.setVisibility(View.VISIBLE);
 		}else{
-			setBackgroundColor(Color.TRANSPARENT);
+			setBackgroundColorInternal(Color.TRANSPARENT);
 			mTextView.setVisibility(View.GONE);
 		}
+		
 	}
 	
 	public void setLauncherIcon(LauncherIcon icon){
@@ -102,8 +104,16 @@ public class MainBarIcon extends LinearLayout implements OnLongClickListener {
 				Utils.startActivity(mContext, mLauncherIcon);
 			}
 		});
+
 	}
 	
+	
+	private void setBackgroundColorInternal(int color){
+		
+		int newColor = Color.argb((int) (.6f*255),Color.red(color),Color.green(color),Color.blue(color));
+		
+		super.setBackgroundColor(newColor);
+	}
 	
 	//Handle our long clicks
 		@Override

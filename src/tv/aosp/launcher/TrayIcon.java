@@ -88,6 +88,8 @@ public class TrayIcon extends LinearLayout implements OnLongClickListener {
 		
 		mLauncherIcon = icon;
 		
+		mLauncherIcon.averageColour = Utils.averageColour(mLauncherIcon.icon);
+		
 		((ImageView)findViewById(R.id.ImageViewIcon)).setImageBitmap(icon.icon);
 		
 		mTextView = ((TextView)findViewById(R.id.TextViewName));

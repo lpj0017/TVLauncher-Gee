@@ -63,6 +63,8 @@ public class Launcher extends Activity implements ClockViewListener, DBListener,
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+		getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
+		
 		setContentView(R.layout.main);
 
 		packages = getInstalledApps(false);
@@ -133,7 +135,7 @@ public class Launcher extends Activity implements ClockViewListener, DBListener,
 
 		DBHelper mDbHelper = new DBHelper(this);
 
-		for (int i = 0; i < packages.size() && i < numItems; i++) {
+		for (int i = 0; i < packages.size() && numItems>0; i++) {
 
 			if (mDbHelper.checkFavouritePosition(packages.get(i).className) != DBHelper.NOT_FAVOURITE) {
 
@@ -142,6 +144,8 @@ public class Launcher extends Activity implements ClockViewListener, DBListener,
 				icon.setLauncherIcon(packages.get(i));
 
 				mainbar.addView(icon);
+				
+				numItems--;
 
 			}
 		}
@@ -164,7 +168,7 @@ public class Launcher extends Activity implements ClockViewListener, DBListener,
 					info.activityInfo.packageName, info.activityInfo.loadLabel(
 							getPackageManager()).toString(),
 					info.activityInfo.name);
-			newInfo.averageColour = Utils.averageColour(newInfo.icon);
+			
 
 			res.add(newInfo);
 		}
@@ -225,6 +229,7 @@ public class Launcher extends Activity implements ClockViewListener, DBListener,
 
 			@Override
 			public void run() {
+				System.out.println("Table updated rebuilding mainbar");
 				populateMainbar();
 			}
 		});
